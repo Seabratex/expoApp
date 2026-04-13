@@ -49,7 +49,6 @@ Join our community of developers creating universal apps.
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
-
 ## After install Expo Go on Smarthphone
 
 If gets a error as start, like > There was a problem running...
