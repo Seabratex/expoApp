@@ -1,24 +1,13 @@
-// Importa componentes básicos
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-// Importa o componente Cartao que você criou
-import { Cartao } from '../../components/cartao';
+import { Cartao } from '../../components/Cartao';
 
-// Tela chamada Usuarios
 export default function UsuariosScreen() {
-
   return (
-    // ScrollView permite rolar a tela (importante para listas)
-    <ScrollView style={styles.container}>
-
-      {/* Título da tela */}
+    <ScrollView style={styles.container} contentContainerStyle={styles.conteudo}>
       <Text style={styles.titulo}>Lista de Usuários</Text>
 
-      {/* Container dos cartões */}
       <View style={styles.lista}>
-
-        {/* Usando o componente Cartao várias vezes */}
-
         <Cartao
           nome="João Silva"
           cargo="Desenvolvedor"
@@ -46,30 +35,25 @@ export default function UsuariosScreen() {
           departamento="RH"
           ativo={false}
         />
-
       </View>
-
     </ScrollView>
   );
 }
 
-// Estilos da tela
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     backgroundColor: '#f4f6fb',
-    padding: 16,
   },
-
+  conteudo: {
+    padding: 16,
+    paddingBottom: 28,
+  },
   titulo: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: '#1e3a5f',
     marginBottom: 16,
   },
-
-  lista: {
-    // container dos cartões
-  },
-
+  lista: {},
 });
