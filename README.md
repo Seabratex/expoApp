@@ -1,8 +1,8 @@
-# Welcome to your Expo app 👋
+# Welcome MY  Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+## Get started SEABRA
 
 1. Install dependencies
 
@@ -14,7 +14,13 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
    ```bash
    npx expo start
-   ```
+   npm install
+   npx expo start --tunnel 
+   git add readme.md 
+## after install expo go on smarthphone
+   ``` 
+npx expo start --tunnel 
+   ``` 
 
 In the output, you'll find options to open the app in a
 
@@ -49,3 +55,7 @@ Join our community of developers creating universal apps.
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 "# expoApp"  
+## teste de link 
+[entre no link](https://globo.com)
+## TESTE DE LINK 
+[67](   https://en.wikipedia.org/wiki/6-7)
