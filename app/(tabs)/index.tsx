@@ -46,9 +46,10 @@ export default function HomeScreen() {
       {/* 2.7 Card de apresentação do módulo atual */}
       <View style={styles.cardModulo}>
         <Text style={styles.tagModulo}>Módulo em estudo</Text>
-        <Text style={styles.tituloModulo}>Persistência de Dados</Text>
-        <Text style={styles.subtituloModulo}>com React Native</Text>
-        <Text style={styles.autorModulo}>Prof. Denis Gonçalves Cople</Text>
+        <Text style={styles.tituloModulo}>ISO/IEC </Text>
+        <Text style={styles.subtituloModulo}>certificação aplicaçao em projetos  </Text>
+        <Text style={styles.autorModulo}>SEABRA
+        </Text>
       </View>
 
       {/* ── PASSO 3 — Percebemos a repetição, hora de criar o componente ── */}
@@ -60,54 +61,63 @@ export default function HomeScreen() {
       {/* 4.1 Propósito do módulo */}
       <BlocoAula
         titulo="Propósito"
-        descricao="Ao final dos estudos, você deverá estar apto a construir aplicativos com persistência de dados, utilizando diversas metodologias: AsyncStorage, SQLite, Realm e MongoDB."
+        descricao="Explicar como as normas ISO/IEC ajudam na organização, segurança, qualidade e governança de projetos de TI."
       />
 
       {/* 4.2 O que precisa estar instalado antes de começar */}
       <BlocoAula
-        titulo="Preparação do ambiente"
-        descricao="É necessário ter instalado: JDK, Android Studio, VS Code, Node.js e MongoDB. Via NPM ou Yarn, instale react-native-cli e expo-cli. No celular, instale o aplicativo Expo."
+        titulo="Normas principais"
+        descricao="International Organization for Standardization ISO
+International Electrotechnical Commission IEC "
       />
 
       {/* 4.3 O que será aprendido ao longo do módulo */}
       <BlocoAula
-        titulo="Objetivos do módulo"
-        descricao="1. AsyncStorage → persistência local com chave-valor.&#10;2. SQLite → modelo relacional.&#10;3. Realm → modelo orientado a objetos.&#10;4. MongoDB → modelo NoSQL com armazenamento remoto."
+        titulo="PRINCIPAIS NORMAS"
+        descricao="DESCRIÇAO DAS NORMAS
+ISO/IEC 27001 — Segurança da Informação
+ISO/IEC 20000 — Gestão de Serviços de TI
+ISO 9001 — Gestão da Qualidade
+ISO/IEC 38500 — Governança de TI"
       />
 
       {/* 4.4 Conceito de serialização */}
       <BlocoAula
-        titulo="Serialização"
-        descricao="Serialização é transformar um objeto (espalhado na memória) em um formato contíguo para armazenar ou transmitir. No React Native usamos JSON — ex: JSON.stringify(objeto) para serializar e JSON.parse(texto) para de-serializar."
+        titulo="O que é ISO/IEC 27001"
+        descricao=" fornece às empresas de qualquer porte e de todos os setores de atividade orientações para o estabelecimento, implementação, manutenção e melhoria contínua de um sistema de gestão da segurança da informação.Significa que uma organização ou empresa implementou um sistema para gerenciar riscos relacionados à segurança dos dados de propriedade ou manipulados pela empresa e que esse sistema respeita todas as melhores práticas e princípios consagrados nesta Norma Internacional."
+      />
+      <BlocoAula
+        titulo="é importante?"
+        descricao="Sim, a ISO/IEC 27001 é uma norma internacional que fornece orientações para a gestão da segurança da informação. Ela ajuda as organizações a proteger seus dados e informações, garantindo conformidade com as melhores práticas de segurança. Um sistema de gerenciamento de segurança da informação implementado de acordo com este padrão é uma ferramenta para gestão de riscos, ciber-resiliência e, e excelência operacional. "
+        
       />
 
       {/* 4.5 Conceito de persistência */}
       <BlocoAula
-        titulo="Persistência"
-        descricao="Uma estrutura persistente é aquela capaz de guardar seu estado em meio não volátil (disco). No React Native, como o ambiente móvel exige operações assíncronas, usaremos async/await para não travar a interface."
+        titulo="O que é IEC?"
+        descricao="IEC significa International Electrotechnical Commission. É uma organização internacional que prepara normas para eletricidade, eletrônica e tecnologias relacionadas. Frequentemente trabalha com a ISO em padrões de TI."
       />
 
       {/* 4.6 O que é AsyncStorage */}
       <BlocoAula
-        titulo="AsyncStorage"
-        descricao="É a forma mais simples de persistência no React Native. Funciona com pares chave-valor, parecido com uma chave primária num banco. Os objetos precisam ser serializados em JSON antes de serem guardados."
+        titulo="Diferenças e Sinergia entre ISO e IEC"
+        descricao="•	ISO: Foco em processos e sistemas gerais
+•	IEC: Foco em aspectos técnicos e elétricos
+•	ISO/IEC: Combinação para cobrir processos e aspectos técnicos
+"
       />
 
-      {/* 4.7 O que vamos construir na prática */}
-      <BlocoAula
-        titulo="O que vamos construir"
-        descricao="Um app de cadastro de produtos com: listagem (FlatList), formulário de inclusão (TextInput) e exclusão de itens. Os dados serão persistidos localmente via AsyncStorage — mesmo fechando o app, a lista é mantida."
-      />
+     
 
       {/* ── CARD DE NAVEGAÇÃO ────────────────────────────────────────────── */}
 
       {/* 2.8 Card com botões de ação para navegar para outras telas */}
       <View style={styles.cardAcoes}>
-        <Text style={styles.tituloAcoes}>Explore o projeto</Text>
+        <Text style={styles.tituloAcoes}>APROFUNDE MAIS </Text>
 
         {/* 2.9 Botão que navega para a tela de exemplos práticos */}
         <Pressable style={styles.botaoPrimario} onPress={irParaPratica}>
-          <Text style={styles.textoBotaoPrimario}>Ver exemplos práticos</Text>
+          <Text style={styles.textoBotaoPrimario}>exemplos práticos</Text>
         </Pressable>
 
         {/* 2.10 Botão que abre o modal de rota */}
