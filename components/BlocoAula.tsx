@@ -1,85 +1,110 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// FLUXO DE CONSTRUÇÃO — Componente BlocoAula
-// Este componente é criado durante a construção da tela Home (index.tsx).
-// Construa este arquivo quando chegar no Passo 3 do index.tsx.
-// Depois de pronto, volte para o Passo 4 do index.tsx para usá-lo.
+// components/BlocoAula.tsx
+// Componente reutilizável para exibir blocos de conteúdo educativo.
+//
+// Props:
+//   titulo    — rótulo em caixa alta no topo do card
+//   descricao — corpo de texto explicativo
+//   tipo      — define a cor da barra lateral:
+//               'padrao'   → cinza azulado (conteúdo comum)
+//               'destaque' → ouro (#d4af37) — conceito principal da seção
+//               'definicao'→ azul elétrico (#1a6bff) — definição técnica
 // ─────────────────────────────────────────────────────────────────────────────
 
-// ── PASSO 1 — Imports ────────────────────────────────────────────────────────
-
-// 1.1 Importa os componentes necessários do React Native
-//     StyleSheet → para criar e organizar os estilos do componente
-//     Text       → para exibir o título e a descrição
-//     View       → container que agrupa e estrutura os elementos do card
 import { StyleSheet, Text, View } from 'react-native';
 
-// ── PASSO 2 — Tipo das propriedades (TypeScript) ──────────────────────────────
+// ── Tipos ────────────────────────────────────────────────────────────────────
 
-// 2.1 Define quais props o componente aceita e qual o tipo de cada uma
-//     Isso é TypeScript: garante que quem usar BlocoAula passe os dados corretos
-//     Se faltar uma prop ou o tipo estiver errado, o editor já avisa antes de rodar
-type BlocoAulaProps = {
-  titulo: string;    // 2.2 título do bloco — deve ser sempre um texto
-  descricao: string; // 2.3 descrição do bloco — deve ser sempre um texto
+type TipoBloco = 'padrao' | 'destaque' | 'definicao';
+
+type Props = {
+  titulo: string;
+  descricao: string;
+  tipo?: TipoBloco;  // opcional — padrão é 'padrao'
 };
 
-// ── PASSO 3 — Componente ─────────────────────────────────────────────────────
+// ── Componente ────────────────────────────────────────────────────────────────
 
-// 3.1 Cria o componente BlocoAula
-//     Recebe as props via desestruturação: { titulo, descricao }
-//     "export" permite que outros arquivos importem e usem esse componente
-//     → Este componente é usado em index.tsx no Passo 4
-export function BlocoAula({ titulo, descricao }: BlocoAulaProps) {
+export function BlocoAula({ titulo, descricao, tipo = 'padrao' }: Props) {
+
+  // Determina as cores com base no tipo do bloco
+  const corBarra =
+    tipo === 'destaque'  ? '#d4af37' :   // ouro — conceito principal
+    tipo === 'definicao' ? '#1a6bff' :   // azul — definição técnica
+                           '#1e3a5f';    // navy — conteúdo comum
+
+  const corTitulo =
+    tipo === 'destaque'  ? '#d4af37' :   // ouro
+    tipo === 'definicao' ? '#60a5fa' :   // azul claro
+                           '#4a6fa5';    // azul médio
+
   return (
-
-    // 3.2 View é o container do card — agrupa título e descrição
     <View style={styles.card}>
 
-      {/* 3.3 Exibe o título recebido via prop
-               As chaves { } permitem usar variáveis dentro do JSX */}
-      <Text style={styles.titulo}>{titulo}</Text>
+      {/* Barra lateral colorida — assinatura visual do componente */}
+      <View style={[styles.barra, { backgroundColor: corBarra }]} />
 
-      {/* 3.4 Exibe a descrição recebida via prop */}
-      <Text style={styles.descricao}>{descricao}</Text>
+      {/* Conteúdo textual */}
+      <View style={styles.conteudo}>
+        <Text style={[styles.titulo, { color: corTitulo }]}>
+          {titulo}
+        </Text>
+        <Text style={styles.descricao}>
+          {descricao}
+        </Text>
+      </View>
 
     </View>
   );
 }
 
-// ── PASSO 4 — Estilos ────────────────────────────────────────────────────────
+// ── Estilos ───────────────────────────────────────────────────────────────────
 
 const styles = StyleSheet.create({
 
-  // 4.1 Estilo do card (container principal)
+  // Card externo — dark navy com sombra
   card: {
-    backgroundColor: '#ffffff', // fundo branco
-    borderRadius: 16,           // bordas arredondadas
-    padding: 18,                // espaçamento interno
-    marginBottom: 14,           // espaço abaixo de cada bloco (separa os cards)
-    borderWidth: 1,             // espessura da borda
-    borderColor: '#dbe4f0',     // cor da borda (azul bem claro)
-    // Sombra para iOS
+    flexDirection: 'row',
+    backgroundColor: '#0f1f3d',
+    borderRadius: 14,
+    marginBottom: 12,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#1a3060',
+    // Sombra iOS
     shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 3 },
-    // Sombra para Android
-    elevation: 2,
+    shadowOpacity: 0.35,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    // Sombra Android
+    elevation: 5,
   },
 
-  // 4.2 Estilo do título
+  // Barra lateral — 4px, colorida por tipo
+  barra: {
+    width: 4,
+  },
+
+  // Área de texto à direita da barra
+  conteudo: {
+    flex: 1,
+    padding: 16,
+  },
+
+  // Rótulo da seção — caixa alta, pequeno, colorido por tipo
   titulo: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1e3a5f',  // azul escuro
-    marginBottom: 8,   // espaço entre o título e a descrição
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 2,
+    textTransform: 'uppercase',
+    marginBottom: 8,
   },
 
-  // 4.3 Estilo da descrição
+  // Corpo do texto — cinza claro, legível no fundo escuro
   descricao: {
-    fontSize: 15,
-    color: '#4b5563', // cinza médio
-    lineHeight: 23,   // altura da linha — aumentar melhora a legibilidade de textos longos
+    fontSize: 14,
+    color: '#cbd5e1',
+    lineHeight: 22,
   },
 
 });
