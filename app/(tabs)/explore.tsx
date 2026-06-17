@@ -1,373 +1,336 @@
-// useState é um hook do React que cria variáveis reativas
-// Quando o valor muda, a tela re-renderiza automaticamente mostrando o novo estado
-import { useState } from 'react';
+// ─────────────────────────────────────────────────────────────────────────────
+// app/(tabs)/explore.tsx  —  Tela de Aprofundamento
+// Conteúdo: Diretrizes de Segurança, Gestão de Riscos,
+//           Gestão de Incidentes e Conscientização
+// ─────────────────────────────────────────────────────────────────────────────
 
-// Importa os componentes do React Native usados nessa tela:
-// ActivityIndicator → ícone animado de carregamento (spinner)
-// Modal             → exibe conteúdo por cima da tela atual (sem trocar de rota)
-// Pressable         → área clicável, como um botão customizável
-// ScrollView        → permite rolagem do conteúdo quando ele ultrapassa a tela
-// StyleSheet        → organiza estilos em um único objeto
-// Text              → exibe textos na tela
-// View              → container para agrupar elementos (como uma "div" no HTML)
-import {
-  ActivityIndicator,
-  Modal,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { useRouter } from 'expo-router';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { BlocoAula } from '../../components/BlocoAula';
 
-// SafeAreaView vem de um pacote separado (react-native-safe-area-context)
-// O SafeAreaView do react-native está depreciado — este aqui é o correto e atualizado
-// Ele protege o conteúdo das áreas sensíveis da tela (notch, câmera, barra de status)
-import { SafeAreaView } from 'react-native-safe-area-context';
-
-// Componente da tela "Prática"
 export default function ExploreScreen() {
 
-  // Estado que controla se o Modal está visível ou não
-  // false = modal fechado | true = modal aberto
-  const [modalVisible, setModalVisible] = useState(false);
-
-  // Estado que controla se o indicador de carregamento está ativo
-  // false = não está carregando | true = está carregando
-  const [carregando, setCarregando] = useState(false);
-
-  // Função que simula um carregamento de 2,5 segundos
-  function simularCarregamento() {
-    setCarregando(true); // ativa o spinner imediatamente
-
-    // setTimeout executa uma função após um tempo (em milissegundos)
-    // 2500ms = 2,5 segundos
-    setTimeout(() => {
-      setCarregando(false); // desativa o spinner depois de 2,5 segundos
-    }, 2500);
-  }
+  const router = useRouter();
 
   return (
-    // ─────────────────────────────────────────────────────────────────
-    // SafeAreaView vs ScrollView — qual a diferença?
-    //
-    // SafeAreaView → protege o conteúdo das áreas recortadas do celular
-    //                (notch, câmera, barra de status, barra de gestos)
-    //                Não adiciona rolagem — apenas cria margens seguras
-    //
-    // ScrollView   → permite que o conteúdo role verticalmente (ou horizontalmente)
-    //                quando ele for maior do que a altura visível da tela
-    //                Não protege das áreas recortadas por si só
-    //
-    // Resultado: usamos os dois juntos — SafeAreaView por fora protege as bordas,
-    // ScrollView por dentro deixa o conteúdo rodar dentro dessa área segura
-    // ─────────────────────────────────────────────────────────────────
-    <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container} contentContainerStyle={styles.conteudo}>
 
-        {/* Título da tela */}
-        <Text style={styles.titulo}>Exemplos práticos da aula</Text>
+    <ScrollView style={styles.container} contentContainerStyle={styles.conteudo}>
 
-        {/* Subtítulo descritivo */}
-        <Text style={styles.subtitulo}>
-          Esta tela demonstra, na prática, alguns componentes importantes para interfaces mobile.
-        </Text>
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+      {/* HEADER                                                                 */}
+      {/* ══════════════════════════════════════════════════════════════════════ */}
 
-        {/* ── CARD 1: View ───────────────────────────────────────────── */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitulo}>View como container</Text>
-          <Text style={styles.cardTexto}>
-            A View organiza os elementos em blocos. É o container principal usado para estruturar a interface.
-          </Text>
+      <View style={styles.cardHeader}>
+        <Text style={styles.tagHeader}>ISO / IEC  •  APROFUNDAMENTO</Text>
+        <Text style={styles.tituloHeader}>Diretrizes &{'\n'}Gestão</Text>
+        <View style={styles.dividerGold} />
+        <Text style={styles.autorHeader}>SEABRA®</Text>
+        <Text style={styles.autorSub}>Gestão de TI</Text>
+      </View>
 
-          {/* Exemplo visual: duas Views lado a lado usando flexDirection: 'row' */}
-          <View style={styles.exemploLinha}>
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+      {/* SEÇÃO 01 — DIRETRIZES DE POLÍTICA DE SEGURANÇA                       */}
+      {/* ══════════════════════════════════════════════════════════════════════ */}
 
-            {/* Bloco azul escuro */}
-            <View style={styles.caixaAzul}>
-              <Text style={styles.textoCaixa}>Bloco 1</Text>
-            </View>
+      <Text style={styles.secaoLabel}>01 — Diretrizes de Política de Segurança</Text>
 
-            {/* Bloco azul claro */}
-            <View style={styles.caixaClara}>
-              <Text style={styles.textoCaixaEscuro}>Bloco 2</Text>
-            </View>
+      <BlocoAula
+        tipo="destaque"
+        titulo="Tratamento da Informação"
+        descricao="Estabelece mecanismos e controles sobre como os dados devem ser coletados, processados, armazenados e compartilhados. Define práticas para garantir a confidencialidade, integridade, disponibilidade e autenticidade das informações, incluindo diretrizes para a classificação de dados sensíveis."
+      />
 
-          </View>
-        </View>
+      <BlocoAula
+        titulo="Segurança Física"
+        descricao="Medidas para proteger fisicamente os ativos de informação: restrições de acesso a locais críticos, monitoramento por sistemas de segurança, controles de entrada e saída, e medidas para prevenir danos causados por fatores ambientais como incêndios e inundações."
+      />
 
-        {/* ── CARD 2: ScrollView + SafeAreaView ──────────────────────── */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitulo}>ScrollView + SafeAreaView</Text>
-          <Text style={styles.cardTexto}>
-            O ScrollView permite rolagem quando houver muito conteúdo na tela.{'\n\n'}
-            O SafeAreaView protege o conteúdo de ser cortado nas bordas do celular (notch, câmera frontal, barra de status).{'\n\n'}
-            Eles se complementam: SafeAreaView cuida das bordas, ScrollView cuida da rolagem.
-          </Text>
-        </View>
+      <BlocoAula
+        titulo="Gestão de Ativos"
+        descricao="Determina como os recursos de TI devem ser inventariados, rastreados, protegidos e descartados ao final de sua vida útil. O objetivo é otimizar a utilização dos recursos e minimizar os riscos associados a ativos desatualizados ou sem controle."
+      />
 
-        {/* ── CARD 3: Modal ──────────────────────────────────────────── */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitulo}>Modal</Text>
-          <Text style={styles.cardTexto}>
-            O Modal exibe conteúdo por cima da tela atual, sem trocar de rota.{'\n\n'}
-            É diferente do modal de rota (modal.tsx): aquele é uma tela separada
-            aberta via router.push(). Este aqui é um componente que aparece
-            diretamente na mesma tela, controlado pelo estado (useState).
-          </Text>
+      <BlocoAula
+        titulo="Gestão do Uso de Recursos Digitais"
+        descricao="Regula o uso das tecnologias disponíveis: internet, e-mail, redes sociais e computação em nuvem. Define quais atividades são permitidas, restringidas ou proibidas para garantir produtividade e minimizar riscos de segurança e uso inadequado."
+      />
 
-          {/* Botão que muda o estado modalVisible para true, abrindo o Modal */}
-          <Pressable style={styles.botaoAzul} onPress={() => setModalVisible(true)}>
-            <Text style={styles.textoBotao}>Abrir modal</Text>
-          </Pressable>
-        </View>
+      <BlocoAula
+        tipo="definicao"
+        titulo="Controles de Acesso"
+        descricao="Estabelece como as identidades digitais são gerenciadas e como usuários obtêm acesso a sistemas e informações. Aborda três pilares:&#10;• Autenticação — verificar quem é o usuário&#10;• Autorização — definir o que o usuário pode acessar&#10;• Privilégio mínimo — conceder apenas o acesso necessário para a função"
+      />
 
-        {/* ── CARD 4: ActivityIndicator ──────────────────────────────── */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitulo}>ActivityIndicator</Text>
-          <Text style={styles.cardTexto}>
-            O ActivityIndicator é o spinner de carregamento nativo do React Native.{'\n\n'}
-            Serve para indicar ao usuário que uma operação está em andamento
-            (buscar dados de uma API, salvar informações, etc.), evitando a
-            sensação de que o app travou.
-          </Text>
+      <BlocoAula
+        titulo="Gestão de Continuidade"
+        descricao="Orienta como a organização deve se preparar para manter operações em caso de interrupções — ataques cibernéticos, desastres naturais ou falhas de infraestrutura. Inclui a elaboração de Planos de Recuperação de Desastres (DRP) e Planos de Continuidade de Negócios (BCP)."
+      />
 
-          {/* Botão que chama simularCarregamento() */}
-          <Pressable style={styles.botaoVerde} onPress={simularCarregamento}>
-            <Text style={styles.textoBotao}>Simular carregamento</Text>
-          </Pressable>
+      <BlocoAula
+        titulo="Auditoria e Conformidade"
+        descricao="Estabelece como a organização monitora e avalia a conformidade com suas políticas de segurança da informação. Inclui auditorias regulares para verificar a adesão às diretrizes estabelecidas e às regulamentações aplicáveis, como a LGPD e normas ISO."
+      />
 
-          {/* Renderização condicional: só aparece quando "carregando" for true */}
-          {carregando && (
-            <View style={styles.areaLoading}>
-              {/* Spinner animado — size define o tamanho, color define a cor */}
-              <ActivityIndicator size="large" color="#2563eb" />
-              <Text style={styles.textoLoading}>Carregando informações...</Text>
-            </View>
-          )}
-        </View>
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+      {/* SEÇÃO 02 — GESTÃO DE RISCOS                                          */}
+      {/* ══════════════════════════════════════════════════════════════════════ */}
 
-        {/* ── CARD 5: Boas práticas ──────────────────────────────────── */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitulo}>Boas práticas</Text>
-          <Text style={styles.cardTexto}>
-            Evite colocar componentes visuais de forma inadequada, como Image dentro de Text. Prefira usar View para estruturar melhor o layout.
-          </Text>
-        </View>
+      <Text style={styles.secaoLabel}>02 — Gestão de Riscos</Text>
 
-      </ScrollView>
+      <BlocoAula
+        tipo="destaque"
+        titulo="O que é Risco?"
+        descricao="No sentido amplo, é a possibilidade de ocorrência de um evento que pode impactar o cumprimento dos objetivos. Pode ser mensurado em termos de impacto (quão grave seria o dano) e de probabilidade (quão provável é que ocorra)."
+      />
 
-      {/* ── MODAL ────────────────────────────────────────────────────── */}
-      {/* O Modal fica fora do ScrollView para sobrepor toda a tela */}
-      <Modal
-        animationType="slide"    // animação de entrada: "slide" sobe de baixo para cima
-        transparent={true}       // fundo transparente (permite ver a tela por baixo)
-        visible={modalVisible}   // controlado pelo estado: true = visível, false = oculto
-        onRequestClose={() => setModalVisible(false)} // fecha ao pressionar voltar no Android
-      >
-        {/* Overlay escurecido por cima da tela */}
-        <View style={styles.overlay}>
+      <BlocoAula
+        tipo="definicao"
+        titulo="Risco de Segurança da Informação"
+        descricao="Risco potencial associado à exploração de uma ou mais vulnerabilidades de ativos de informação por parte de ameaças, com impacto negativo no negócio da organização. Combina três elementos: ativo + vulnerabilidade + ameaça."
+      />
 
-          {/* Caixa branca do modal */}
-          <View style={styles.modalBox}>
+      <BlocoAula
+        titulo="Identificação de Riscos"
+        descricao="Processo de localizar, listar e caracterizar elementos de risco. Responde à pergunta: quais são os riscos existentes? É o primeiro passo da gestão de riscos e define o escopo de todo o processo seguinte."
+      />
 
-            <Text style={styles.modalTitulo}>Exemplo de Modal</Text>
+      <BlocoAula
+        titulo="Avaliação de Riscos"
+        descricao="Processo de comparar o risco estimado com critérios de risco predefinidos para determinar sua importância. Classifica os riscos por nível de criticidade — definindo quais precisam de ação imediata e quais podem ser monitorados."
+      />
 
-            <Text style={styles.modalTexto}>
-              Esse modal demonstra como exibir conteúdo sobre a tela atual sem trocar de rota.
-            </Text>
+      <BlocoAula
+        tipo="definicao"
+        titulo="Formas de Tratamento do Risco"
+        descricao="• Mitigação — implementar controles para reduzir probabilidade ou impacto&#10;• Aceitação — classificar como aceitável quando o custo de mitigação supera o risco&#10;• Transferência — compartilhar o ônus com outra entidade (ex: seguro, contrato com terceiros)&#10;• Eliminação — descontinuar a atividade que gera o risco"
+      />
 
-            {/* Botão que muda modalVisible para false, fechando o Modal */}
-            <Pressable style={styles.botaoFechar} onPress={() => setModalVisible(false)}>
-              <Text style={styles.textoBotao}>Fechar modal</Text>
-            </Pressable>
+      <BlocoAula
+        titulo="Análise de Custo–Benefício"
+        descricao="Antes de implementar medidas de mitigação, a organização avalia se os custos associados superam os benefícios esperados em termos de redução de risco. Se o custo de controle for maior que o impacto do risco, a aceitação pode ser a decisão mais racional."
+      />
 
-          </View>
-        </View>
-      </Modal>
+      <BlocoAula
+        titulo="Monitoramento Contínuo dos Riscos"
+        descricao="A gestão de riscos não é um evento único — é um processo contínuo. Demanda um método para acompanhar a eficácia das ações de mitigação implementadas e identificar mudanças no perfil de riscos ao longo do tempo, à medida que o ambiente e as ameaças evoluem."
+      />
 
-    </SafeAreaView>
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+      {/* SEÇÃO 03 — GESTÃO DE INCIDENTES                                      */}
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+
+      <Text style={styles.secaoLabel}>03 — Gestão de Incidentes</Text>
+
+      <BlocoAula
+        tipo="destaque"
+        titulo="Gestão de Incidentes de Segurança"
+        descricao="Processo que integra atividades de gestão de riscos, continuidade do negócio, tratamento de incidentes, conformidade, segurança cibernética, física e lógica aos processos estratégicos, operacionais e táticos da organização. Vai além da TI — envolve toda a estrutura institucional."
+      />
+
+      <BlocoAula
+        tipo="definicao"
+        titulo="O que é um Incidente?"
+        descricao="Interrupção não planejada ou redução da qualidade de um serviço. Mais especificamente: ocorrência que permitiu, ou pode permitir, acesso não autorizado, interrupção de operações, destruição, dano, deleção de informação protegida, ou apropriação e publicação indevida de dados de algum ativo crítico."
+      />
+
+      <BlocoAula
+        tipo="definicao"
+        titulo="Incidente Cibernético"
+        descricao="Ocorrência que pode comprometer, real ou potencialmente, a disponibilidade, integridade, confidencialidade ou autenticidade de um sistema de informação. Tipos comuns:&#10;• Tentativas de acesso não autorizado a sistemas ou dados&#10;• Uso não autorizado de sistemas para processamento ou armazenamento&#10;• Mudanças não autorizadas em firmware, hardware ou software&#10;• Ataques de negação de serviço (DDoS)&#10;⚠ Um incidente cibernético não significa necessariamente que as informações já estão comprometidas — significa que estão ameaçadas."
+      />
+
+      <BlocoAula
+        titulo="Gestão de Incidentes Cibernéticos"
+        descricao="Processo que realiza ações sobre qualquer evento adverso relacionado à Segurança Cibernética dos sistemas ou da infraestrutura de computação. Define procedimentos de identificação, contenção, erradicação, recuperação e análise pós-incidente (lições aprendidas)."
+      />
+
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+      {/* SEÇÃO 04 — CONSCIENTIZAÇÃO E CAPACITAÇÃO                             */}
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+
+      <Text style={styles.secaoLabel}>04 — Conscientização e Capacitação</Text>
+
+      <BlocoAula
+        tipo="destaque"
+        titulo="Por que conscientização importa?"
+        descricao="As ações de sensibilização, conscientização e capacitação instrumentalizam os colaboradores no contexto da Segurança Cibernética. Fomentam uma cultura de segurança com comportamentos alinhados às boas práticas — pois o fator humano é a principal vulnerabilidade explorada por atacantes."
+      />
+
+      <BlocoAula
+        titulo="Seminários, Palestras e Workshops"
+        descricao="Realizar eventos periódicos para colaboradores sobre ameaças comuns, boas práticas e medidas de prevenção. O objetivo é manter a equipe atualizada sobre o cenário de ameaças e o papel de cada pessoa na proteção da organização."
+      />
+
+      <BlocoAula
+        titulo="Simulações de Phishing"
+        descricao="Enviar e-mails simulados de phishing para colaboradores para avaliar a capacidade de identificar mensagens maliciosas. Os resultados embasam treinamentos adicionais e mostram quais perfis de usuários precisam de mais atenção."
+      />
+
+      <BlocoAula
+        titulo="Engenharia Social e Senhas Fortes"
+        descricao="• Engenharia social: simular situações para ensinar colaboradores a reconhecer manipulação e fraude&#10;• Senhas fortes: oferecer orientações sobre criação e gerenciamento de senhas únicas e complexas, incluindo o uso de gerenciadores de senhas"
+      />
+
+      <BlocoAula
+        titulo="Exercícios de Resposta a Incidentes"
+        descricao="Realizar simulações de incidentes cibernéticos para treinar equipes sobre como responder a ataques e mitigar impactos. Esses exercícios revelam falhas nos processos antes que um incidente real aconteça, reduzindo tempo de resposta e impacto."
+      />
+
+      <BlocoAula
+        titulo="Dispositivos Móveis e Teletrabalho"
+        descricao="• Dispositivos móveis: orientações para uso seguro de smartphones e tablets, incluindo redes Wi-Fi públicas e apps confiáveis&#10;• Teletrabalho: boas práticas para trabalho remoto, conexão VPN, e compartilhamento seguro de dados e informações corporativas"
+      />
+
+      <BlocoAula
+        titulo="Segurança para Desenvolvedores"
+        descricao="Educar desenvolvedores sobre práticas seguras de codificação para eliminar vulnerabilidades em software. Inclui treinamentos sobre testes de segurança em aplicativos antes de colocá-los em produção — fundamental para projetos de TI."
+      />
+
+      <BlocoAula
+        tipo="definicao"
+        titulo="Programa Contínuo de Treinamento"
+        descricao="A conscientização não é um evento único. Um programa contínuo de treinamento em Segurança Cibernética garante que todos os colaboradores fiquem atualizados e preparados para lidar com a dinâmica das ameaças. Segurança é cultura — não apenas tecnologia."
+      />
+
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+      {/* CARD DE NAVEGAÇÃO                                                      */}
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+
+      <View style={styles.cardAcoes}>
+        <Text style={styles.tituloAcoes}>MÓDULO PRINCIPAL</Text>
+        <Pressable
+          style={styles.botaoPrimario}
+          onPress={() => router.push('/')}
+        >
+          <Text style={styles.textoBotaoPrimario}>← Voltar às Normas ISO/IEC</Text>
+        </Pressable>
+      </View>
+
+    </ScrollView>
   );
 }
 
-// Estilos da tela
+// ── Estilos ───────────────────────────────────────────────────────────────────
+
 const styles = StyleSheet.create({
 
-  // Estilo do SafeAreaView (container externo que protege das bordas)
-  safeArea: {
-    flex: 1,
-    backgroundColor: '#fff4e6', // fundo laranja bem claro
-  },
-
-  // Estilo do ScrollView (container com rolagem)
   container: {
     flex: 1,
-    backgroundColor: '#fff4e6',
+    backgroundColor: '#070d1a',
   },
 
-  // Espaçamento do conteúdo interno
   conteudo: {
     padding: 20,
-    paddingBottom: 36,
+    paddingBottom: 44,
   },
 
-  // Título da tela
-  titulo: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#7c2d12',   // laranja escuro
-    marginBottom: 10,
-  },
+  // ── Header ──────────────────────────────────────────────────────────────
 
-  // Subtítulo
-  subtitulo: {
-    fontSize: 16,
-    color: '#6b7280',
-    lineHeight: 24,
-    marginBottom: 20,
-  },
-
-  // Card genérico de cada seção
-  card: {
-    backgroundColor: '#ffffff',
-    borderRadius: 18,
-    padding: 18,
-    marginBottom: 16,
-    // Sombra iOS
+  cardHeader: {
+    backgroundColor: '#0f1f3d',
+    borderRadius: 20,
+    padding: 28,
+    marginBottom: 24,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#1a3060',
     shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 3 },
-    // Sombra Android
-    elevation: 2,
+    shadowOpacity: 0.5,
+    shadowRadius: 20,
+    shadowOffset: { width: 0, height: 10 },
+    elevation: 10,
   },
 
-  // Título dentro de cada card
-  cardTitulo: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1f2937',
-    marginBottom: 8,
-  },
-
-  // Texto descritivo dentro de cada card
-  cardTexto: {
-    fontSize: 15,
-    color: '#4b5563',
-    lineHeight: 22,
+  tagHeader: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: '#4a6fa5',
+    letterSpacing: 2,
+    textTransform: 'uppercase',
     marginBottom: 14,
   },
 
-  // Linha com dois blocos lado a lado (demonstração de flexDirection: 'row')
-  exemploLinha: {
-    flexDirection: 'row', // organiza os filhos na horizontal
-    gap: 12,              // espaço entre os blocos
-  },
-
-  // Bloco azul escuro
-  caixaAzul: {
-    flex: 1,              // cada caixa ocupa metade do espaço disponível
-    backgroundColor: '#2563eb',
-    borderRadius: 12,
-    padding: 16,
-  },
-
-  // Bloco azul claro
-  caixaClara: {
-    flex: 1,
-    backgroundColor: '#dbeafe',
-    borderRadius: 12,
-    padding: 16,
-  },
-
-  // Texto do bloco azul escuro (branco para contrastar)
-  textoCaixa: {
-    color: '#ffffff',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-
-  // Texto do bloco azul claro (azul escuro para contrastar)
-  textoCaixaEscuro: {
-    color: '#1d4ed8',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-
-  // Botão azul (usado no card do Modal)
-  botaoAzul: {
-    backgroundColor: '#2563eb',
-    paddingVertical: 14,
-    borderRadius: 12,
-  },
-
-  // Botão verde (usado no card do ActivityIndicator)
-  botaoVerde: {
-    backgroundColor: '#059669',
-    paddingVertical: 14,
-    borderRadius: 12,
-  },
-
-  // Texto padrão dos botões
-  textoBotao: {
+  tituloHeader: {
+    fontSize: 40,
+    fontWeight: '900',
     color: '#ffffff',
     textAlign: 'center',
-    fontSize: 15,
-    fontWeight: 'bold',
+    letterSpacing: 2,
+    lineHeight: 46,
   },
 
-  // Área do spinner de carregamento
-  areaLoading: {
-    marginTop: 18,
-    alignItems: 'center',
-    justifyContent: 'center',
+  dividerGold: {
+    width: 40,
+    height: 2,
+    backgroundColor: '#d4af37',
+    marginTop: 16,
+    marginBottom: 16,
+    borderRadius: 2,
   },
 
-  // Texto abaixo do spinner
-  textoLoading: {
-    marginTop: 10,
-    fontSize: 14,
-    color: '#374151',
+  autorHeader: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: '#d4af37',
+    letterSpacing: 5,
+    textTransform: 'uppercase',
   },
 
-  // Fundo escurecido do Modal (overlay semitransparente)
-  overlay: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.35)', // preto com 35% de opacidade
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 24,
+  autorSub: {
+    fontSize: 11,
+    color: '#4a6fa5',
+    letterSpacing: 1.5,
+    marginTop: 5,
   },
 
-  // Caixa branca dentro do Modal
-  modalBox: {
-    width: '100%',
-    maxWidth: 360,       // limita a largura em telas grandes
-    backgroundColor: '#ffffff',
-    borderRadius: 18,
-    padding: 22,
-  },
+  // ── Labels de seção ─────────────────────────────────────────────────────
 
-  // Título dentro do Modal
-  modalTitulo: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#1e3a5f',
+  secaoLabel: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: '#d4af37',
+    letterSpacing: 2.5,
+    textTransform: 'uppercase',
     marginBottom: 12,
+    marginTop: 10,
+    paddingLeft: 4,
   },
 
-  // Texto descritivo dentro do Modal
-  modalTexto: {
-    fontSize: 15,
-    color: '#4b5563',
-    lineHeight: 22,
-    marginBottom: 18,
+  // ── Card de ações ────────────────────────────────────────────────────────
+
+  cardAcoes: {
+    backgroundColor: '#0f1f3d',
+    borderRadius: 18,
+    padding: 20,
+    marginTop: 16,
+    borderWidth: 1,
+    borderColor: '#1a3060',
+    elevation: 5,
   },
 
-  // Botão de fechar o Modal (vermelho)
-  botaoFechar: {
-    backgroundColor: '#ef4444',
-    paddingVertical: 14,
+  tituloAcoes: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: '#4a6fa5',
+    letterSpacing: 2.5,
+    textTransform: 'uppercase',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+
+  botaoPrimario: {
+    width: '100%',
+    backgroundColor: '#1a4fd8',
+    paddingVertical: 15,
     borderRadius: 12,
   },
+
+  textoBotaoPrimario: {
+    color: '#ffffff',
+    textAlign: 'center',
+    fontSize: 15,
+    fontWeight: '700',
+    letterSpacing: 1,
+  },
+
 });
