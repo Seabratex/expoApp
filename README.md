@@ -140,4 +140,4 @@ SEABRA® é uma marca do autor deste projeto.
 
 <p align="center">
   Desenvolvido com 💛 por <strong>SEABRA</strong> — Gestão de TI
-< [LinkedIn](https://www.linkedin.com/in/artur-seabra-ab295a259/)/p>
+<
