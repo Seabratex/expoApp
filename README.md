@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/images/banner.svg" alt="SEABRA ISO/IEC — Gestão de TI" width="100%">
+  <img src="assets/images/banner.svg" alt="SEABRA — Gestão de TI" width="100%">
 </p>
 
 <br/>
@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Plataforma-Expo%20%7C%20React%20Native-0f1f3d?style=flat-square&labelColor=070d1a&color=1a4fd8" alt="Plataforma"/>
   <img src="https://img.shields.io/badge/Linguagem-TypeScript-0f1f3d?style=flat-square&labelColor=070d1a&color=1a4fd8" alt="TypeScript"/>
   <img src="https://img.shields.io/badge/Área-Gestão%20de%20TI-0f1f3d?style=flat-square&labelColor=070d1a&color=d4af37" alt="Área"/>
-  <img src="https://img.shields.io/badge/Foco-ISO%20%2F%20IEC-0f1f3d?style=flat-square&labelColor=070d1a&color=d4af37" alt="ISO/IEC"/>
+  <img src="https://img.shields.io/badge/Foco-ISO%20%2F%20IEC%20%7C%20LGPD-0f1f3d?style=flat-square&labelColor=070d1a&color=d4af37" alt="ISO/IEC LGPD"/>
 </p>
 
 ---
@@ -50,8 +50,8 @@ O objetivo é criar um material de estudo interativo, organizado e acessível no
 - Gestão de Riscos (identificação, avaliação, mitigação, aceitação, transferência)
 - Gestão de Incidentes (incidentes cibernéticos e de segurança)
 - Conscientização e Capacitação em Segurança Cibernética
+- LGPD — Lei Geral de Proteção de Dados
 - Processo de certificação ISO (auditoria, fases, organismos certificadores)
-- Benefícios das certificações para projetos de TI
 
 ---
 
@@ -112,13 +112,33 @@ expoApp/
 
 ---
 
+## 📜 Registro de Certificações
+
+**9 certificações concluídas — 670 horas de formação complementar**
+
+| Curso | Instituição | Carga | Data |
+|---|---|---|---|
+| **Introdução à Lei Brasileira de Proteção de Dados Pessoais** ⭐ | ENAP | 10h | jul/2026 |
+| **Fundamentos da Segurança Cibernética — Introdução ao CIS Controls** ⭐ | ENAP | 25h | jun/2026 |
+| **Arquitetura de Soluções para Transformação Digital** ⭐ | ENAP | 25h | mai/2026 |
+| LGPD — Lei Geral de Proteção de Dados ⭐ | Univ. Patativa do Assaré | 6h | — |
+| AAC — Globalização e Avanços Tecnológicos | Estácio | 10h | nov/2025 |
+| AAC — Comportamento Organizacional | Estácio | 10h | nov/2025 |
+| Informática Avançada | FAJON | 280h | set/2023 |
+| Informática Básica | FAJON | 280h | ago/2023 |
+| Produtividade, Agilidade e Desempenho em Informática | FAJON | 24h | ago/2023 |
+
+⭐ = diretamente relacionado ao eixo TI / Governança / Segurança / LGPD
+
+---
+
 ## 🔗 Referências
 
 - [ISO/IEC 27001 — Information Security](https://www.iso.org/isoiec-27001-information-security.html)
 - [ISO/IEC 20000 — IT Service Management](https://www.iso.org/standard/70636.html)
 - [ISO 9001 — Quality Management](https://www.iso.org/iso-9001-quality-management.html)
 - [ISO/IEC 38500 — IT Governance](https://www.iso.org/standard/62816.html)
-- [ISO/IEC 25010 — Software Quality](https://www.iso.org/standard/35733.html)
+- [LGPD — Lei nº 13.709/2018](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm)
 - [Expo Documentation](https://docs.expo.dev/)
 
 ---
@@ -126,7 +146,7 @@ expoApp/
 ## ⚖️ Direitos Autorais
 
 ```
-© 2025 SEABRA® — Gestão de TI
+© 2025-2026 SEABRA® — Gestão de TI
 Todos os direitos reservados.
 
 Este projeto foi desenvolvido para fins educacionais e acadêmicos.
@@ -139,5 +159,5 @@ SEABRA® é uma marca do autor deste projeto.
 ---
 
 <p align="center">
-  Desenvolvido com 💛 por <strong>SEABRA</strong> — Gestão de TI
-<
+  Desenvolvido por <strong>SEABRA</strong> — Gestão de TI
+</p>
